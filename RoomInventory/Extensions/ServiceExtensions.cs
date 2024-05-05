@@ -1,7 +1,4 @@
-﻿using Contracts;
-using LoggerService;
-
-namespace RoomInventory.Extensions
+﻿namespace RoomInventory.Extensions
 {
     public static class ServiceExtensions
     {
@@ -18,8 +15,5 @@ namespace RoomInventory.Extensions
                      services.Configure<IISOptions>(options =>
                      {
                      });
-        public static void ConfigureLoggerService(this IServiceCollection services) =>
- services.AddSingleton<ILoggerManager, LoggerManager>();
-
     }
 }
