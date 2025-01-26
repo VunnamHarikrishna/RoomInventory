@@ -8,7 +8,7 @@ namespace Contracts
 
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
 
-        void Create(T entity);
+        Task CreateAsync(T entity);
 
         void Update(T entity);
 

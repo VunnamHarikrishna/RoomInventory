@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{0BE42A3A-D7D5-43AC-B8C1-85255341BAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{44BF7C8E-AB53-4AA5-B97B-D3DAB92F4519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{44BF7C8E-AB53-4AA5-B97B-D3DAB92F4519}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{E5291CE7-BD20-4818-9761-D39F7EA16DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{E5291CE7-BD20-4818-9761-D39F7EA16DC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees.Presentation", "CompanyEmployees.Presentation\CompanyEmployees.Presentation.csproj", "{41819B2B-0C23-4632-A58D-B45D9F75950F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{CC943F60-38FD-4BB1-B2A2-6DB55BBC7809}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{E5291CE7-BD20-4818-9761-D39F7EA16DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5291CE7-BD20-4818-9761-D39F7EA16DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5291CE7-BD20-4818-9761-D39F7EA16DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41819B2B-0C23-4632-A58D-B45D9F75950F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41819B2B-0C23-4632-A58D-B45D9F75950F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41819B2B-0C23-4632-A58D-B45D9F75950F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41819B2B-0C23-4632-A58D-B45D9F75950F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC943F60-38FD-4BB1-B2A2-6DB55BBC7809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC943F60-38FD-4BB1-B2A2-6DB55BBC7809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC943F60-38FD-4BB1-B2A2-6DB55BBC7809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC943F60-38FD-4BB1-B2A2-6DB55BBC7809}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
