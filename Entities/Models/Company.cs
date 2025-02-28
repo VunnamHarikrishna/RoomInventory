@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Entities.LinkModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Entities.Models
 {
@@ -20,5 +22,7 @@ namespace Entities.Models
         public string? Address { get; set; }
         public string? Country { get; set; }
         public ICollection<Employee>? Employees { get; set; }
+
+        
     }
 }

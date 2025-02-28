@@ -5,12 +5,15 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel;
 using System.Reflection;
 using CompanyEmployees.Presentation.ModelBinders;
-using CompanyEmployees.Presentation.ValidationFilterAttribute;
+using CompanyEmployees.Presentation.ValidationFilter_Attribute;
+using Microsoft.AspNetCore.Cors;
 
 namespace Presentation.Controllers
-{
+{ 
     [Route("api/companies")]
+    [ResponseCache(CacheProfileName = "120SecondsDuration")]
     [ApiController]
+     
     public class CompaniesController : ControllerBase
     {
         private readonly IServiceManager _service;
@@ -22,7 +25,13 @@ namespace Presentation.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
+        {
+            Response.Headers.Add("abc", "GET, OPTIONS, POST");
+            return Ok();
+        }
+        [HttpGet(Name = "GetCompanies")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies =await _service.CompanyService.GetAllCompaniesAsync(trackChanges: false);
@@ -36,8 +45,8 @@ namespace Presentation.Controllers
 
             return Ok(company);
         }
-            
-        [HttpPost]
+
+        [HttpPost(Name = "CreateCompany")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto company)
         {

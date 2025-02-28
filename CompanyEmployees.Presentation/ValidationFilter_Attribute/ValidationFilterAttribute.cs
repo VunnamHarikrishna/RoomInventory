@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompanyEmployees.Presentation.ValidationFilterAttribute
+namespace CompanyEmployees.Presentation.ValidationFilter_Attribute
 {
     public class ValidationFilterAttribute : IActionFilter
     {
