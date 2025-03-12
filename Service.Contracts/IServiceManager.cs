@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Contracts
     {
         ICompanyService CompanyService { get; }
         IEmployeeService EmployeeService { get; }
+        IAuthenticationService AuthenticationService { get; }
 
     }
 }

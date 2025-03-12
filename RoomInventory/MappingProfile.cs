@@ -17,6 +17,7 @@ namespace RoomInventory
             CreateMap<EmployeeForCreationDto, Employee>();
             CreateMap<EmployeeForUpdateDto, Employee>();
             CreateMap<CompanyForUpdateDto, Company>();
+            CreateMap<UserForRegistrationDto, User>();
             CreateMap<EmployeeForUpdateDto, Employee>().ReverseMap();
 
         }

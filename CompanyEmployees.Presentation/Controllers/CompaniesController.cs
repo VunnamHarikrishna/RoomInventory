@@ -7,11 +7,13 @@ using System.Reflection;
 using CompanyEmployees.Presentation.ModelBinders;
 using CompanyEmployees.Presentation.ValidationFilter_Attribute;
 using Microsoft.AspNetCore.Cors;
+using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Presentation.Controllers
 { 
     [Route("api/companies")]
-    [ResponseCache(CacheProfileName = "120SecondsDuration")]
+    //[ResponseCache(CacheProfileName = "120SecondsDuration")]
     [ApiController]
      
     public class CompaniesController : ControllerBase
@@ -32,6 +34,7 @@ namespace Presentation.Controllers
             return Ok();
         }
         [HttpGet(Name = "GetCompanies")]
+        [Authorize]
         public async Task<IActionResult> GetCompanies()
         {
             var companies =await _service.CompanyService.GetAllCompaniesAsync(trackChanges: false);
@@ -39,6 +42,8 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id:guid}", Name = "CompanyById")]
+        [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
+        [HttpCacheValidation(MustRevalidate = false)]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company =await _service.CompanyService.GetCompanyAsync(id, trackChanges: false);
