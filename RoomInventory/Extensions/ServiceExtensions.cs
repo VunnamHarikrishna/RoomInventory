@@ -1,6 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using CompanyEmployees.Presentation.Controllers;
 using Contracts;
+using Entities.ConfigurationModels;
 using Entities.Models;
 using LoggerService;
 using Marvin.Cache.Headers;
@@ -112,7 +113,7 @@ namespace RoomInventory.Extensions
                     new RateLimitRule
                     {
                         Endpoint = "*",
-                        Limit = 3,
+                        Limit = 500,
                         Period = "5m"
                     }
                 };
@@ -140,10 +141,11 @@ namespace RoomInventory.Extensions
             .AddEntityFrameworkStores<RepositoryContext>()
             .AddDefaultTokenProviders();
         }
-        public static void ConfigureJWT(this IServiceCollection services, IConfiguration
-configuration)
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = configuration.GetSection("JwtSettings");
+            var jwtConfiguration = new JwtConfiguration();
+            configuration.Bind(jwtConfiguration.Section, jwtConfiguration);
+
             var secretKey = Environment.GetEnvironmentVariable("SECRET");
 
             services.AddAuthentication(opt =>
@@ -160,12 +162,12 @@ configuration)
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
 
-                    ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience = jwtSettings["validAudience"],
-                    IssuerSigningKey = new
-   SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                    ValidIssuer = jwtConfiguration.ValidIssuer,
+                    ValidAudience = jwtConfiguration.ValidAudience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
         }
-    }
+
+        }
 }

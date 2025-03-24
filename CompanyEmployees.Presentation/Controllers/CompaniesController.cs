@@ -34,7 +34,7 @@ namespace Presentation.Controllers
             return Ok();
         }
         [HttpGet(Name = "GetCompanies")]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies =await _service.CompanyService.GetAllCompaniesAsync(trackChanges: false);

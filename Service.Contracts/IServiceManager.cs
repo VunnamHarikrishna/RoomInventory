@@ -13,5 +13,6 @@ namespace Contracts
         IEmployeeService EmployeeService { get; }
         IAuthenticationService AuthenticationService { get; }
 
+
     }
 }
