@@ -127,6 +127,7 @@ namespace RoomInventory.Extensions
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
             services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
         }
+
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             var builder = services.AddIdentity<User, IdentityRole>(o =>
@@ -141,6 +142,7 @@ namespace RoomInventory.Extensions
             .AddEntityFrameworkStores<RepositoryContext>()
             .AddDefaultTokenProviders();
         }
+
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtConfiguration = new JwtConfiguration();
@@ -169,5 +171,7 @@ namespace RoomInventory.Extensions
             });
         }
 
-        }
+        public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) =>
+        services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
+    }
 }
