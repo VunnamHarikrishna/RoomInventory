@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace CompanyEmployees.Presentation.Controllers
 { 
     [Route("api/companies1")]
+    [ApiExplorerSettings(GroupName = "v2")]
     [ApiController]
     public class CompaniesV2Controller : ControllerBase
     {

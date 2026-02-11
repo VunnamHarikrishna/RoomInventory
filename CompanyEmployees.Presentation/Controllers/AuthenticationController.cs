@@ -37,11 +37,23 @@ namespace CompanyEmployees.Presentation.Controllers
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
-            if (!await _service.AuthenticationService.ValidateUser(user))
-                return Unauthorized();
-            var tokenDto = await _service.AuthenticationService.CreateToken(populateExp: true);
+            try
+            {
+                if (user is null)
+                    return BadRequest("UserForAuthenticationDto object is null");
 
-            return Ok(tokenDto);
+                if (!await _service.AuthenticationService.ValidateUser(user))
+                    return Unauthorized();
+                var tokenDto = await _service.AuthenticationService.CreateToken(populateExp: true);
+
+                return Ok(tokenDto);
+            }
+            catch(Exception ex)
+            { 
+                // Log the exception (not shown here for brevity)
+                return StatusCode(500, "Internal server error");
+            }
+
         }
     }
 

@@ -3,6 +3,7 @@ using Contracts;
 using Entities.Exceptions;
 using Entities.Models;
 using Shared.DataTransferObjects;
+using System.Diagnostics;
 
 namespace Service
 {
@@ -26,8 +27,16 @@ namespace Service
         /// <returns></returns>
         public async Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(bool trackChanges)
         {
-           
-            var companies = await _repository.Company.GetAllCompaniesAsync(trackChanges);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var companies = _repository.Company.GetAllCompaniesAsync(trackChanges);//5
+            var company2 = _repository.Company.GetAllCompaniesAsync( trackChanges);//5
+            var company3 = _repository.Company.GetAllCompaniesAsync(trackChanges);//5
+            stopwatch.Stop();
+            _logger.LogInfo("Time: "+stopwatch.ElapsedMilliseconds.ToString());
+
+            await companies;
+
             var companies2 = _repository.Company.GetAllCompanies();
 
             var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);

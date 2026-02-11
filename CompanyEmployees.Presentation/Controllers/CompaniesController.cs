@@ -14,8 +14,8 @@ namespace Presentation.Controllers
 { 
     [Route("api/companies")]
     //[ResponseCache(CacheProfileName = "120SecondsDuration")]
+    [ApiExplorerSettings(GroupName = "v1")]
     [ApiController]
-     
     public class CompaniesController : ControllerBase
     {
         private readonly IServiceManager _service;
@@ -29,10 +29,14 @@ namespace Presentation.Controllers
 
         [HttpOptions]
         public IActionResult GetCompaniesOptions()
-        {
+        { 
             Response.Headers.Add("abc", "GET, OPTIONS, POST");
             return Ok();
         }
+        /// <summary>
+        /// test
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetCompanies")]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetCompanies()
@@ -86,6 +90,7 @@ namespace Presentation.Controllers
         {
            
              await _service.CompanyService.UpdateCompanyAsync(id, company, trackChanges: true);
+            
             return NoContent();
         }
 

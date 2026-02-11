@@ -26,6 +26,7 @@ namespace CompanyEmployees.Presentation.Controllers
             var linkParams = new LinkParameters(employeeParameters, HttpContext);
             //var pagedResult = await _service.EmployeeService.GetEmployeesAsync(companyId, linkParams, trackChanges: false);
             var result = await _service.EmployeeService.GetEmployeesAsync(companyId,linkParams, trackChanges: false);
+          
             //var pagedResult =  _service.EmployeeService.GetEmployeesAsync(companyId, employeeParameters, trackChanges: false).Result;
             Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(result.metaData));
 
